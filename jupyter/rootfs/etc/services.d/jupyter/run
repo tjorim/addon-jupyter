@@ -10,36 +10,36 @@ declare -a options
 
 hass.log.info 'Starting the Jupyter server'
 
-options+=(--ip='0.0.0.0')
-options+=(--port='8888')
-options+=(--no-browser)
-options+=(--allow-root)
-options+=(--notebook-dir=/config)
+options+=("--ip='0.0.0.0'")
+options+=("--port='8888'")
+options+=("--no-browser")
+options+=("--allow-root")
+options+=("--notebook-dir=/config")
 options+=(-y)
 
 # Find the matching Jupyter log level
 case "$(hass.string.lower "$(hass.config.get 'log_level')")" in
     all|trace|debug)
-        options+=(--log-level='DEBUG')
+        options+=("--log-level='DEBUG'")
         ;;
     info|notice)
-        options+=(--log-level='INFO')
+        options+=("--log-level='INFO'")
         ;;
     warning)
-        options+=(--log-level='WARN')
+        options+=("--log-level='WARN'")
         ;;
     error)
-        options+=(--log-level='ERROR')
+        options+=("--log-level='ERROR'")
         ;;
     fatal|off)
-        options+=(--log-level='CRITICAL')
+        options+=("--log-level='CRITICAL'")
         ;;
 esac
 
 # SSL Configuration
 if hass.config.true 'ssl'; then
-    options+=(--keyfile="/ssl/$(hass.config.get 'keyfile')")
-    options+=(--certfile="/ssl/$(hass.config.get 'certfile')")
+    options+=("--keyfile='/ssl/$(hass.config.get 'keyfile')'")
+    options+=("--certfile='/ssl/$(hass.config.get 'certfile')'")
 fi
 
 # Run Juypter Notebook server
