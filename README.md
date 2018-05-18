@@ -14,11 +14,19 @@
 
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
 
-Lorem ipsum
+Create documents containing live code, equations, visualizations,
+and explanatory text.
 
 ## About
 
-Lorem ipsum
+ Jupyter is an open-source web application that allows you to create and share
+ documents that contain live code, equations, visualizations and narrative text.
+ Uses include: data cleaning and transformation, numerical simulation,
+ statistical modeling, data visualization, machine learning, and much more.
+
+ This add-on runs JupyterLab, which is the next-generation user interface for
+ Project Jupyter. It is an extensible environment for interactive and
+ reproducible computing, based on the Jupyter Notebook and Architecture.
 
 ## Installation
 
@@ -39,25 +47,21 @@ comparison to installing any other Hass.io add-on.
 [![Docker Version][armhf-version-shield]][armhf-microbadger]
 [![Docker Layers][armhf-layers-shield]][armhf-microbadger]
 [![Docker Pulls][armhf-pulls-shield]][armhf-dockerhub]
-[![Anchore Image Overview][armhf-anchore-shield]][armhf-anchore]
 
 [![Docker Architecture][aarch64-arch-shield]][aarch64-dockerhub]
 [![Docker Version][aarch64-version-shield]][aarch64-microbadger]
 [![Docker Layers][aarch64-layers-shield]][aarch64-microbadger]
 [![Docker Pulls][aarch64-pulls-shield]][aarch64-dockerhub]
-[![Anchore Image Overview][aarch64-anchore-shield]][aarch64-anchore]
 
 [![Docker Architecture][amd64-arch-shield]][amd64-dockerhub]
 [![Docker Version][amd64-version-shield]][amd64-microbadger]
 [![Docker Layers][amd64-layers-shield]][amd64-microbadger]
 [![Docker Pulls][amd64-pulls-shield]][amd64-dockerhub]
-[![Anchore Image Overview][amd64-anchore-shield]][amd64-anchore]
 
 [![Docker Architecture][i386-arch-shield]][i386-dockerhub]
 [![Docker Version][i386-version-shield]][i386-microbadger]
 [![Docker Layers][i386-layers-shield]][i386-microbadger]
 [![Docker Pulls][i386-pulls-shield]][i386-dockerhub]
-[![Anchore Image Overview][i386-anchore-shield]][i386-anchore]
 
 ## Configuration
 
@@ -67,8 +71,17 @@ Example add-on configuration:
 
 ```json
 {
-  "log_level": "info"
-}
+    "log_level": "info",
+    "password": "omgpuppies",
+    "ssl": true,
+    "certfile": "fullchain.pem",
+    "keyfile": "privkey.pem",
+    "system_packages": [
+      "ffmpeg"
+    ],
+    "python_packages": [
+      "nltk"
+    ]
 ```
 
 **Note**: _This is just an example, don't copy and past it! Create your own!_
@@ -90,6 +103,61 @@ Please note that each level automatically includes log messages from a
 more severe level, e.g., `debug` also shows `info` messages. By default,
 the `log_level` is set to `info`, which is the recommended setting unless
 you are troubleshooting.
+
+### Option: `password`
+
+Sets the password to authenticate with Jupyter Lab. Leaving the password
+empty, will disable password authentication.
+
+### Option: `ssl`
+
+Enables/Disables SSL (HTTPS) on the web terminal. Set it `true` to enable it,
+`false` otherwise.
+
+### Option: `certfile`
+
+The certificate file to use for SSL.
+
+**Note**: _The file MUST be stored in `/ssl/`, which is default for Hass.io_
+
+### Option: `keyfile`
+
+The private key file to use for SSL.
+
+**Note**: _The file MUST be stored in `/ssl/`, which is default for Hass.io_
+
+### Option: `system_packages`
+
+Allows you to specify additional [Alpine packages][alpine-packages] to be
+installed to your Jupyter setup (e.g., `g++`. `make`, `ffmpeg`).
+
+**Note**: _Adding many packages will result in a longer start-up time
+for the add-on._
+
+### Option: `python_packages`
+
+Allows you to specify additional [Python packages][python-packages] to be
+installed to your Jupyter setup (e.g., `PyMySQL`. `Requests`, `Pillow`).
+
+**Note**: _Adding many packages will result in a longer start-up time
+for the add-on._
+
+## Embedding into Home Assistant
+
+It is possible to embed Jupyter directly into Home Assistant, allowing
+you to access the Jupyter Lab through the Home Assistant frontend.
+
+Home Assistant provides the `panel_iframe` component, for these purposes.
+
+Example configuration:
+
+```yaml
+panel_iframe:
+  jupyter:
+    title: Jupyter Lab
+    icon: mdi:flask
+    url: https://addres.to.your.hass.io:8888
+```
 
 ## Changelog & Releases
 
@@ -224,3 +292,5 @@ SOFTWARE.
 [releases]: https://github.com/hassio-addons/addon-jupyter/releases
 [repository]: https://github.com/hassio-addons/repository
 [semver]: http://semver.org/spec/v2.0.0.htm
+[alpine-packages]: https://pkgs.alpinelinux.org/packages
+[python-packages]: https://pypi.org/
