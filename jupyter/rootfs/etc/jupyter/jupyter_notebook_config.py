@@ -19,3 +19,8 @@ c.NotebookApp.port = 8888
 c.NotebookApp.token = ''
 c.NotebookApp.tornado_settings = {'static_url_prefix': '/static/'}
 c.NotebookApp.trust_xheaders = True
+c.NotebookApp.tornado_settings = {
+    'headers': {
+        'Content-Security-Policy': "frame-ancestors *"
+    }
+}
