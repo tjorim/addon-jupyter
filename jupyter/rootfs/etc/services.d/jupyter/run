@@ -36,5 +36,8 @@ if hass.config.true 'ssl'; then
     options+=(--certfile="/ssl/$(hass.config.get 'certfile')")
 fi
 
+# Change current working directory
+cd /config/notebooks
+
 # Run Juypter Notebook server
 exec jupyter lab "${options[@]}"
