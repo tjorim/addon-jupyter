@@ -37,7 +37,7 @@ if hass.config.true 'ssl'; then
 fi
 
 # Change current working directory
-cd /config/notebooks
+cd /config/notebooks || hass.die 'Failed changing working directory'
 
 # Run Juypter Notebook server
 exec jupyter lab "${options[@]}"
