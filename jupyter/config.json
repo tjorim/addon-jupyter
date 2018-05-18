@@ -30,13 +30,16 @@
     "certfile": "fullchain.pem",
     "keyfile": "privkey.pem",
     "system_packages": [],
+    "python_packages": []
   },
   "schema": {
     "log_level": "match(^(trace|debug|info|notice|warning|error|fatal)$)",
     "password": "str",
     "ssl": "bool",
     "certfile": "str",
-    "keyfile": "str"
+    "keyfile": "str",
+    "system_packages": ["str"],
+    "python_packages": ["str"]
   },
   "environment": {
     "LOG_FORMAT": "{LEVEL}: {MESSAGE}"
