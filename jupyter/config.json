@@ -4,6 +4,7 @@
   "slug": "jupyter",
   "description": "Create documents containing live code, equations, visualizations, and explanatory text.",
   "url": "https://github.com/hassio-addons/addon-jupyter",
+  "webui": "[PROTO:ssl]://[HOST]:[PORT:8888]",
   "startup": "application",
   "arch": [
     "aarch64",
