@@ -11,13 +11,6 @@ declare -a options
 
 hass.log.info 'Starting the Jupyter server'
 
-options+=(--ip='0.0.0.0')
-options+=(--port='8888')
-options+=(--no-browser)
-options+=(--allow-root)
-options+=(--notebook-dir=/config)
-options+=(-y)
-
 # Find the matching Jupyter log level
 case "$(hass.string.lower "$(hass.config.get 'log_level')")" in
     all|trace|debug)
