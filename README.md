@@ -19,14 +19,14 @@ and explanatory text.
 
 ## About
 
- Jupyter is an open-source web application that allows you to create and share
- documents that contain live code, equations, visualizations and narrative text.
- Uses include: data cleaning and transformation, numerical simulation,
- statistical modeling, data visualization, machine learning, and much more.
+Jupyter is an open-source web application that allows you to create and share
+documents that contain live code, equations, visualizations and narrative text.
+Uses include: data cleaning and transformation, numerical simulation,
+statistical modeling, data visualization, machine learning, and much more.
 
- This add-on runs JupyterLab, which is the next-generation user interface for
- Project Jupyter. It is an extensible environment for interactive and
- reproducible computing, based on the Jupyter Notebook and Architecture.
+This add-on runs JupyterLab, which is the next-generation user interface for
+Project Jupyter. It is an extensible environment for interactive and
+reproducible computing, based on the Jupyter Notebook and Architecture.
 
 ## Installation
 
