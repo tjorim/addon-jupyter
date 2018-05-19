@@ -17,7 +17,6 @@ RUN \
         py-w3lib@edge=1.15.0-r0 \
         py3-asn1crypto=0.23.0-r0 \
         py3-attrs@edge=17.4.0-r1 \
-        py3-beautifulsoup4@edge=4.6.0-r0 \
         py3-cffi=1.10.0-r0 \
         py3-cryptography=2.0.3-r1 \
         py3-cssselect@edge=1.0.0-r1 \
@@ -26,7 +25,6 @@ RUN \
         py3-dispatcher@edge=2.0.5-r2 \
         py3-influxdb@edge=4.1.1-r0 \
         py3-jedi@edge=0.12.0-r0 \
-        py3-jinja2=2.9.6-r0 \
         py3-jsonschema=2.6.0-r0 \
         py3-lxml=4.1.1-r0 \
         py3-markupsafe=1.0-r0 \
@@ -67,10 +65,14 @@ RUN \
     \
     && pip3 install --no-cache-dir \
         bash_kernel==0.7.1 \
+        beautifulsoup4==4.6.0 \
         bokeh==0.12.16 \
+        geopy==1.14.0 \
+        homeassistant==0.69.1 \
         ipykernel==4.8.2 \
         ipython==6.4.0 \
         ipywidgets==7.2.1 \
+        jinja2==2.10 \
         jupyter_client==5.2.3 \
         jupyter_core==4.4.0 \
         jupyterlab==0.32.1 \
