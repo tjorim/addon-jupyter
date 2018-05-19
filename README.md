@@ -73,6 +73,7 @@ Example add-on configuration:
 {
     "log_level": "info",
     "password": "omgpuppies",
+    "github_access_token": "abcdef1234567890abcdef0123456789abcdef01",
     "ssl": true,
     "certfile": "fullchain.pem",
     "keyfile": "privkey.pem",
@@ -108,6 +109,15 @@ you are troubleshooting.
 
 Sets the password to authenticate with JupyterLab. Leaving the password
 empty, will disable password authentication.
+
+### Option: `github_access_token`
+
+Sets an GitHub access token. When making unauthenticated requests to GitHub 
+(as we must do to get repository data), GitHub imposes fairly strict rate-limits
+on how many requests we can make. As such, you are likely to hit that limit
+within a few minutes of work.
+
+There is a chapter in this document with instruction on obtaining such a token.
 
 ### Option: `ssl`
 
@@ -158,6 +168,22 @@ panel_iframe:
     icon: mdi:flask
     url: https://addres.to.your.hass.io:8888
 ```
+
+## Getting a GitHub access token
+
+You can get an access token by following these steps:
+1. [Verify][github-verify] your email address with GitHub.
+1. Go to your account settings on GitHub and select "Developer Settings"
+   from the left panel.
+1. On the left, select "Personal access tokens"
+1. Click the "Generate new token" button, and enter your password.
+1. Give the token a description, and check the "**repo**" scope box.
+1. Click "Generate token"
+1. You should be given a string which will be your access token.
+
+Remember that this token is effectively a password for your GitHub account.
+*Do not* share it online or check the token into version control,
+as people can use it to access all of your data on GitHub.
 
 ## Changelog & Releases
 
@@ -243,6 +269,7 @@ SOFTWARE.
 [aarch64-microbadger]: https://microbadger.com/images/hassioaddons/jupyter-aarch64
 [aarch64-pulls-shield]: https://img.shields.io/docker/pulls/hassioaddons/jupyter-aarch64.svg
 [aarch64-version-shield]: https://images.microbadger.com/badges/version/hassioaddons/jupyter-aarch64.svg
+[alpine-packages]: https://pkgs.alpinelinux.org/packages
 [amd64-anchore-shield]: https://img.shields.io/badge/lorem-ipsum-red.svg
 [amd64-anchore]: https://anchore.io/image/dockerhub/hassioaddons%2Fjupyter-amd64%3Alatest
 [amd64-arch-shield]: https://img.shields.io/badge/architecture-amd64-blue.svg
@@ -271,6 +298,7 @@ SOFTWARE.
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
 [forum]: https://community.home-assistant.io/?u=frenck
 [frenck]: https://github.com/frenck
+[github-verify]: https://help.github.com/articles/verifying-your-email-address
 [gitlabci-shield]: https://gitlab.com/hassio-addons/addon-jupyter/badges/master/pipeline.svg
 [gitlabci]: https://gitlab.com/hassio-addons/addon-jupyter/pipelines
 [home-assistant]: https://home-assistant.io
@@ -287,10 +315,9 @@ SOFTWARE.
 [license-shield]: https://img.shields.io/github/license/hassio-addons/addon-jupyter.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2018.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-concept-red.svg
+[python-packages]: https://pypi.org/
 [reddit]: https://reddit.com/r/homeassistant
 [releases-shield]: https://img.shields.io/github/release/hassio-addons/addon-jupyter.svg
 [releases]: https://github.com/hassio-addons/addon-jupyter/releases
 [repository]: https://github.com/hassio-addons/repository
 [semver]: http://semver.org/spec/v2.0.0.htm
-[alpine-packages]: https://pkgs.alpinelinux.org/packages
-[python-packages]: https://pypi.org/

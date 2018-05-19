@@ -6,6 +6,7 @@ c = get_config()
 # NotebookApp configuration
 # ------------------------------------------------------------------------------
 
+c.GitHubConfig.access_token = ''
 c.JupyterApp.answer_yes = True
 c.NotebookApp.allow_origin = '*'
 c.NotebookApp.allow_password_change = False

@@ -78,6 +78,7 @@ RUN \
         jinja2==2.10 \
         jupyter_client==5.2.3 \
         jupyter_core==4.4.0 \
+        jupyterlab_github==0.6.0 \
         jupyterlab==0.32.1 \
         matplotlib==2.2.2 \
         nbconvert==5.3.1 \
@@ -92,6 +93,7 @@ RUN \
         xlrd==1.1.0 \
     \
     && jupyter labextension install jupyterlab_bokeh \
+    && jupyter labextension install @jupyterlab/github \
     && apk del --purge .build-dependencies \
     && apk del --purge py-numpy-dev \
     && rm -rf \
