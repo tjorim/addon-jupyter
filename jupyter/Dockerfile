@@ -3,6 +3,7 @@ ARG BUILD_FROM=hassioaddons/base-amd64:1.4.1
 FROM ${BUILD_FROM}
 
 # Setup base
+# hadolint ignore=DL3018
 RUN \
     apk add --no-cache \
         freetype=2.8.1-r2 \
@@ -18,7 +19,7 @@ RUN \
         py-twisted=17.1.0-r0 \
         py-w3lib@edge=1.15.0-r0 \
         py3-asn1crypto=0.23.0-r0 \
-        py3-attrs@edge=17.4.0-r1 \
+        'py3-attrs@edge>=17.4.0-r1' \
         py3-cffi=1.10.0-r0 \
         py3-cryptography=2.0.3-r1 \
         py3-cssselect@edge=1.0.0-r1 \
