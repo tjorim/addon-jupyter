@@ -112,7 +112,7 @@ empty, will disable password authentication.
 
 ### Option: `github_access_token`
 
-Sets an GitHub access token. When making unauthenticated requests to GitHub 
+Sets an GitHub access token. When making unauthenticated requests to GitHub
 (as we must do to get repository data), GitHub imposes fairly strict rate-limits
 on how many requests we can make. As such, you are likely to hit that limit
 within a few minutes of work.
@@ -172,6 +172,7 @@ panel_iframe:
 ## Getting a GitHub access token
 
 You can get an access token by following these steps:
+
 1. [Verify][github-verify] your email address with GitHub.
 1. Go to your account settings on GitHub and select "Developer Settings"
    from the left panel.
