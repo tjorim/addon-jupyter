@@ -106,7 +106,7 @@ you are troubleshooting.
 
 ### Option: `password`
 
-Sets the password to authenticate with Jupyter Lab. Leaving the password
+Sets the password to authenticate with JupyterLab. Leaving the password
 empty, will disable password authentication.
 
 ### Option: `ssl`
@@ -145,7 +145,7 @@ for the add-on._
 ## Embedding into Home Assistant
 
 It is possible to embed Jupyter directly into Home Assistant, allowing
-you to access the Jupyter Lab through the Home Assistant frontend.
+you to access the JupyterLab through the Home Assistant frontend.
 
 Home Assistant provides the `panel_iframe` component, for these purposes.
 
@@ -154,7 +154,7 @@ Example configuration:
 ```yaml
 panel_iframe:
   jupyter:
-    title: Jupyter Lab
+    title: JupyterLab
     icon: mdi:flask
     url: https://addres.to.your.hass.io:8888
 ```
