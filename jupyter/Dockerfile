@@ -9,6 +9,8 @@ RUN \
         libffi=3.2.1-r4 \
         libxml2=2.9.7-r0 \
         libxslt=1.1.31-r0 \
+        nodejs-npm=8.9.3-r1 \
+        nodejs=8.9.3-r1 \
         openblas=0.2.19-r3 \
         openssl=1.0.2o-r0 \
         py-cycler@edge=0.10.0-r0 \
@@ -46,6 +48,7 @@ RUN \
         py3-yaml=3.12-r1 \
         py3-zmq@edge=17.0.0-r0 \
         python3=3.6.3-r9 \
+        yarn@edge=1.6.0-r0 \
         zeromq=4.2.2-r2 \
     \
     && pip3 install --no-cache-dir --upgrade \
@@ -88,6 +91,7 @@ RUN \
         statsmodels==0.9.0 \
         xlrd==1.1.0 \
     \
+    && jupyter labextension install jupyterlab_bokeh \
     && apk del --purge .build-dependencies \
     && apk del --purge py-numpy-dev \
     && rm -rf \
