@@ -8,6 +8,8 @@ c = get_config()
 
 c.GitHubConfig.access_token = ''
 c.JupyterApp.answer_yes = True
+c.LabApp.user_settings_dir = '/data/user-settings'
+c.LabApp.workspaces_dir = '/data/workspaces'
 c.NotebookApp.allow_origin = '*'
 c.NotebookApp.allow_password_change = False
 c.NotebookApp.allow_root = True
