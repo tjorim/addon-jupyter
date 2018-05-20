@@ -82,6 +82,7 @@ RUN \
         nbconvert==5.3.1 \
         notebook==5.5.0 \
         numpy==1.14.3 \
+        pandas-datareader==0.6.0 \
         pandas==0.23.0 \
         plotly==2.6.0 \
         PyMySQL==0.8.1 \
