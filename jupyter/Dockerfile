@@ -14,10 +14,26 @@ RUN \
         nodejs=8.9.3-r1 \
         openblas=0.2.19-r3 \
         openssl=1.0.2o-r0 \
-        py-cycler@edge=0.10.0-r0 \
-        py-numpy-dev@edge=1.14.3-r0 \
-        py-twisted=17.1.0-r0 \
-        py-w3lib@edge=1.15.0-r0 \
+        python3=3.6.3-r9 \
+        yarn@edge=1.6.0-r0 \
+        zeromq=4.2.2-r2 \
+    \
+    && apk add --no-cache --virtual .build-dependencies \
+        freetype-dev=2.8.1-r2 \
+        g++=6.4.0-r5 \
+        gcc=6.4.0-r5 \
+        make=4.2.1-r0 \
+        musl-dev=1.1.18-r3 \
+        openblas-dev=0.2.19-r3 \
+        openssl-dev=1.0.2o-r0 \
+        python3-dev=3.6.3-r9 \
+    \
+    && pip3 install --no-cache-dir --upgrade \
+        pip==10.0.1 \
+        setuptools==39.1.0 \
+        wheel==0.31.1 \
+    \
+    && apk add --no-cache \
         py3-asn1crypto=0.23.0-r0 \
         'py3-attrs@edge>=17.4.0-r1' \
         py3-cffi=1.10.0-r0 \
@@ -31,7 +47,6 @@ RUN \
         py3-jsonschema=2.6.0-r0 \
         py3-lxml=4.1.1-r0 \
         py3-markupsafe=1.0-r0 \
-        py3-numpy@edge=1.14.3-r0 \
         py3-openssl@edge=17.2.0-r0 \
         py3-packaging@edge=17.1-r0 \
         py3-pexpect@edge=4.5-r0 \
@@ -48,24 +63,6 @@ RUN \
         py3-wcwidth=0.1.7-r0 \
         py3-yaml=3.12-r1 \
         py3-zmq@edge=17.0.0-r0 \
-        python3=3.6.3-r9 \
-        yarn@edge=1.6.0-r0 \
-        zeromq=4.2.2-r2 \
-    \
-    && pip3 install --no-cache-dir --upgrade \
-        pip==10.0.1 \
-        setuptools==39.1.0 \
-        wheel==0.31.1 \
-    \
-    && apk add --no-cache --virtual .build-dependencies \
-        freetype-dev=2.8.1-r2 \
-        g++=6.4.0-r5 \
-        gcc=6.4.0-r5 \
-        make=4.2.1-r0 \
-        musl-dev=1.1.18-r3 \
-        openblas-dev=0.2.19-r3 \
-        openssl-dev=1.0.2o-r0 \
-        python3-dev=3.6.3-r9 \
     \
     && pip3 install --no-cache-dir \
         bash_kernel==0.7.1 \
@@ -84,6 +81,7 @@ RUN \
         matplotlib==2.2.2 \
         nbconvert==5.3.1 \
         notebook==5.5.0 \
+        numpy==1.14.3 \
         pandas==0.23.0 \
         plotly==2.6.0 \
         PyMySQL==0.8.1 \
@@ -96,7 +94,6 @@ RUN \
     && jupyter labextension install jupyterlab_bokeh \
     && jupyter labextension install @jupyterlab/github \
     && apk del --purge .build-dependencies \
-    && apk del --purge py-numpy-dev \
     && rm -rf \
         /root/.cache \
     && find /usr/lib/python3.6/ -type d -name tests -depth -exec rm -rf {} \; \
