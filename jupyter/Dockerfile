@@ -17,6 +17,8 @@ RUN \
         python3=3.6.3-r9 \
         yarn@edge=1.7.0-r0 \
         zeromq=4.2.2-r2 \
+        hdf5-dev@edge=1.8.20-r0 \
+        hdf5@edge=1.8.20-r0 \
     \
     && apk add --no-cache \
         py3-asn1crypto@edge=0.24.0-r0 \
@@ -62,6 +64,7 @@ RUN \
         beautifulsoup4==4.6.0 \
         bokeh==0.12.16 \
         geopy==1.14.0 \
+        HASS-data-detective==0.41 \
         homeassistant==0.71.0 \
         influxdb==5.0.0 \
         ipykernel==4.8.2 \
@@ -82,7 +85,6 @@ RUN \
         PyMC3==3.4.1 \
         PyMySQL==0.8.1 \
         python-dateutil==2.7.3 \
-        requests==2.19.1 \
         scikit-learn==0.19.1 \
         scrapy==1.5.0 \
         seaborn==0.8.1 \
@@ -92,6 +94,7 @@ RUN \
     \
     && jupyter labextension install jupyterlab_bokeh \
     && jupyter labextension install @jupyterlab/github \
+    && apk del --purge hdf5-dev \
     && apk del --purge .build-dependencies \
     && rm -rf \
         /root/.cache \
