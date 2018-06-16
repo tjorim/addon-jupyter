@@ -18,27 +18,36 @@ RUN \
         yarn@edge=1.7.0-r0 \
         zeromq=4.2.2-r2 \
     \
+    && apk add --no-cache \
+        py3-asn1crypto@edge=0.24.0-r0 \
+        py3-cffi=1.10.0-r0 \
+        py3-cryptography@edge=2.1.4-r1	 \
+        py3-lxml=4.1.1-r0 \
+        py3-markupsafe=1.0-r0 \
+        py3-openssl@edge=17.2.0-r0 \
+        py3-scipy@edge=1.0.1-r1 \
+    \
     && apk add --no-cache --virtual .build-dependencies \
         freetype-dev=2.8.1-r3 \
+        freetype-dev=2.8.1-r3 \
+        fribidi-dev=0.19.7-r0 \
         g++=6.4.0-r5 \
         gcc=6.4.0-r5 \
+        harfbuzz-dev=1.6.3-r0 \
+        jpeg-dev=8-r6 \
+        lcms2-dev=2.8-r1 \
         libxml2-dev=2.9.7-r0 \
         libxslt-dev=1.1.31-r0 \
         make=4.2.1-r0 \
         musl-dev=1.1.18-r3 \
         openblas-dev=0.2.19-r3 \
+        openjpeg-dev=2.3.0-r0 \
         openssl-dev=1.0.2o-r0 \
         python3-dev=3.6.3-r9 \
-        jpeg-dev \
-        zlib-dev \
-        freetype-dev \
-        lcms2-dev \
-        openjpeg-dev \
-        tiff-dev \
-        tk-dev \
-        tcl-dev \
-        harfbuzz-dev \
-        fribidi-dev \
+        tcl-dev=8.6.7-r0 \
+        tiff-dev=4.0.9-r4 \
+        tk-dev=8.6.6-r1 \
+        zlib-dev=1.2.11-r1 \
     \
     && pip3 install --no-cache-dir --upgrade \
         pip==10.0.1 \
@@ -47,7 +56,6 @@ RUN \
     \
     && pip3 install --no-cache-dir \
         numpy==1.14.5 \
-        scipy==1.1.0 \
     \
     && pip3 install --no-cache-dir \
         bash_kernel==0.7.1 \
@@ -71,6 +79,7 @@ RUN \
         pandas==0.23.1 \
         pillow==5.1.0 \
         plotly==2.7.0 \
+        PyMC3=3.4.1 \
         PyMySQL==0.8.1 \
         python-dateutil==2.7.3 \
         requests==2.19.1 \
