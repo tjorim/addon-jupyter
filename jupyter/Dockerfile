@@ -79,7 +79,7 @@ RUN \
         pandas==0.23.1 \
         pillow==5.1.0 \
         plotly==2.7.0 \
-        PyMC3=3.4.1 \
+        PyMC3==3.4.1 \
         PyMySQL==0.8.1 \
         python-dateutil==2.7.3 \
         requests==2.19.1 \
