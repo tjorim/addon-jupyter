@@ -24,8 +24,10 @@ RUN \
         gpg=2.2.4-1ubuntu1.1 \
         libfreetype6-dev=2.8.1-2ubuntu2 \
         libfreetype6=2.8.1-2ubuntu2 \
+        libjpeg-turbo8-dev=1.5.2-0ubuntu5.18.04.1 \
         libpng-dev=1.6.34-1ubuntu0.18.04.1 \
         libpng16-16=1.6.34-1ubuntu0.18.04.1 \
+        libtiff5-dev=4.0.9-5 \
         libunwind-dev=1.2.1-8 \
         libunwind8=1.2.1-8 \
         libzmq3-dev=4.2.5-1 \
@@ -34,6 +36,7 @@ RUN \
         python-dev=2.7.15~rc1-1 \
         python3-dev=3.6.5-3ubuntu1 \
         python3=3.6.5-3ubuntu1 \
+        zlib1g-dev=1:1.2.11.dfsg-0ubuntu2 \
     \
     && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
     \
@@ -60,12 +63,15 @@ RUN \
         gpg \
         gpg-agent \
         libfreetype6-dev \
+        libjpeg-turbo8-dev \
         libpng-dev \
+        libtiff5-dev \
         libunwind-dev \
         libzmq3-dev \
         pkg-config \
         python-dev \
         python3-dev \
+        zlib1g-dev \
     \
     && find /usr/lib/python3.6/ -type d -name tests -depth -exec rm -rf {} \; \
     && find /usr/lib/python3.6/ -type d -name test -depth -exec rm -rf {} \; \
