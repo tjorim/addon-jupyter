@@ -12,8 +12,23 @@
     "armhf",
     "i386"
   ],
+  "machine": [
+    "intel-nuc",
+    "qemux86",
+    "qemux86-64",
+    "qemuarm",
+    "qemuarm-64",
+    "raspberrypi2",
+    "raspberrypi3",
+    "raspberrypi3-64",
+    "tinker",
+    "odroid-c2",
+    "odroid-xu"
+  ],
   "boot": "auto",
   "hassio_api": true,
+  "auth_api": false,
+  "hassio_role": "default",
   "homeassistant_api": true,
   "host_network": false,
   "ports": {

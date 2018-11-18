@@ -1,112 +1,77 @@
-ARG BUILD_FROM=hassioaddons/base-amd64:1.4.2
+ARG BUILD_FROM=hassioaddons/ubuntu-base:2.2.0
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
+# Set shell
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# Copy Python requirements file
+COPY requirements.txt /opt/
+
 # Setup base
 # hadolint ignore=DL3018
+ARG BUILD_ARCH
+ARG MAKEFLAGS="-j2"
 RUN \
-    apk add --no-cache \
-        freetype=2.8.1-r3 \
-        libffi=3.2.1-r4 \
-        libxml2=2.9.7-r0 \
-        libxslt=1.1.31-r0 \
-        nodejs-npm=8.9.3-r1 \
-        nodejs=8.9.3-r1 \
-        openblas=0.2.19-r3 \
-        openssl=1.0.2o-r0 \
-        python3=3.6.3-r9 \
-        yarn@edge=1.7.0-r0 \
-        zeromq=4.2.2-r2 \
-        hdf5-dev@edge=1.8.20-r0 \
-        hdf5@edge=1.8.20-r0 \
+    apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential=12.4ubuntu1 \
+        dirmngr=2.2.4-1ubuntu1.1 \
+        git=1:2.17.1-1ubuntu0.3 \
+        gpg-agent=2.2.4-1ubuntu1.1 \
+        gpg=2.2.4-1ubuntu1.1 \
+        python3-dev=3.6.5-3ubuntu1 \
+        python3=3.6.5-3ubuntu1 \
+        libfreetype6=2.8.1-2ubuntu2 \
+        libfreetype6-dev=2.8.1-2ubuntu2 \
+        pkg-config=0.29.1-0ubuntu2 \
+        libpng16-16=1.6.34-1ubuntu0.18.04.1 \
+        libpng-dev=1.6.34-1ubuntu0.18.04.1 \
     \
-    && apk add --no-cache \
-        py3-asn1crypto@edge=0.24.0-r0 \
-        py3-cffi=1.10.0-r0 \
-        py3-cryptography@edge=2.1.4-r1	 \
-        py3-lxml=4.1.1-r0 \
-        py3-markupsafe=1.0-r0 \
-        py3-openssl@edge=17.2.0-r0 \
-        py3-scipy@edge=1.0.1-r1 \
+    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
     \
-    && apk add --no-cache --virtual .build-dependencies \
-        freetype-dev=2.8.1-r3 \
-        freetype-dev=2.8.1-r3 \
-        fribidi-dev=0.19.7-r0 \
-        g++=6.4.0-r5 \
-        gcc=6.4.0-r5 \
-        harfbuzz-dev=1.6.3-r0 \
-        jpeg-dev=8-r6 \
-        lcms2-dev=2.8-r1 \
-        libxml2-dev=2.9.7-r0 \
-        libxslt-dev=1.1.31-r0 \
-        make=4.2.1-r0 \
-        musl-dev=1.1.18-r3 \
-        openblas-dev=0.2.19-r3 \
-        openjpeg-dev=2.3.0-r0 \
-        openssl-dev=1.0.2o-r0 \
-        python3-dev=3.6.3-r9 \
-        tcl-dev=8.6.7-r0 \
-        tiff-dev=4.0.9-r4 \
-        tk-dev=8.6.6-r1 \
-        zlib-dev=1.2.11-r1 \
+    && apt-get install -y --no-install-recommends \
+        nodejs=8.12.0-1nodesource1 \
     \
-    && pip3 install --no-cache-dir --upgrade \
-        pip==10.0.1 \
-        setuptools==39.2.0 \
-        wheel==0.31.1 \
+    && curl https://bootstrap.pypa.io/get-pip.py | python3 \
     \
-    && pip3 install --no-cache-dir \
-        numpy==1.14.5 \
+    && pip3 install --no-cache-dir -r /opt/requirements.txt \
     \
-    && pip3 install --no-cache-dir \
-        bash_kernel==0.7.1 \
-        beautifulsoup4==4.6.0 \
-        bokeh==0.12.16 \
-        geopy==1.14.0 \
-        HASS-data-detective==0.41 \
-        homeassistant==0.71.0 \
-        influxdb==5.0.0 \
-        ipykernel==4.8.2 \
-        ipython==6.4.0 \
-        ipywidgets==7.2.1 \
-        jinja2==2.10 \
-        jupyter_client==5.2.3 \
-        jupyter_core==4.4.0 \
-        jupyterlab_github==0.6.0 \
-        jupyterlab==0.32.1 \
-        matplotlib==2.2.2 \
-        nbconvert==5.3.1 \
-        notebook==5.5.0 \
-        pandas-datareader==0.6.0 \
-        pandas==0.23.1 \
-        pillow==5.1.0 \
-        plotly==2.7.0 \
-        PyMC3==3.4.1 \
-        PyMySQL==0.8.1 \
-        python-dateutil==2.7.3 \
-        scikit-learn==0.19.1 \
-        scrapy==1.5.0 \
-        seaborn==0.8.1 \
-        SQLAlchemy==1.2.8 \
-        statsmodels==0.9.0 \
-        xlrd==1.1.0 \
+    && npm config set user 0 \
+    && npm config set unsafe-perm true \
+    && npm install ijavascript -g \
+    && ijsinstall --hide-undefined --install=global \
+    \
+    && python3 -m bash_kernel.install \
     \
     && jupyter labextension install jupyterlab_bokeh \
     && jupyter labextension install @jupyterlab/github \
-    && apk del --purge hdf5-dev \
-    && apk del --purge .build-dependencies \
-    && rm -rf \
-        /root/.cache \
+    \
+    && apt-get purge -y --auto-remove \
+        build-essential \
+        dirmngr \
+        gpg \
+        gpg-agent \
+        python3-dev \
+        libfreetype6-dev \
+        pkg-config \
+        libpng-dev \
+    \
     && find /usr/lib/python3.6/ -type d -name tests -depth -exec rm -rf {} \; \
-        && find /usr/lib/python3.6/ -type d -name test -depth -exec rm -rf {} \; \
-        && find /usr/lib/python3.6/ -name __pycache__ -depth -exec rm -rf {} \;
+    && find /usr/lib/python3.6/ -type d -name test -depth -exec rm -rf {} \; \
+    && find /usr/lib/python3.6/ -name __pycache__ -depth -exec rm -rf {} \; \
+    \
+    && rm -fr \
+        /tmp/* \
+        /root/.gnupg \
+        /root/.cache \
+        /var/{cache,log}/* \
+        /var/lib/apt/lists/*
 
 # Copy root filesystem
 COPY rootfs /
 
 # Build arugments
-ARG BUILD_ARCH
 ARG BUILD_DATE
 ARG BUILD_REF
 ARG BUILD_VERSION

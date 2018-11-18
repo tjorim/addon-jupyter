@@ -11,7 +11,6 @@ variables:
 stages:
   - preflight
   - build
-  - scan
   - deploy
   - manifest
   - publish
@@ -61,47 +60,6 @@ stages:
     - |
       docker push \
         "registry.gitlab.com/${CI_PROJECT_PATH}/${ADDON_ARCH}:${CI_COMMIT_SHA}"
-# Generic scan template
-.scan: &scan
-  <<: *dind
-  stage: scan
-  allow_failure: true
-  before_script:
-    - docker info
-    - docker run -d --name db arminc/clair-db:latest
-    - docker run -p 6060:6060 --link db:postgres -d --name clair arminc/clair-local-scan:v2.0.1
-    - apk add -U curl ca-certificates
-    - |
-      curl \
-        --silent \
-        --show-error \
-        --location \
-        --fail \
-        --retry 3 \
-        --output /usr/bin/clair-scanner \
-        https://github.com/arminc/clair-scanner/releases/download/v8/clair-scanner_linux_amd64
-    - chmod +x /usr/bin/clair-scanner
-    - touch clair-whitelist.yml
-    - echo "Waiting for Clair to start"
-    - |
-      while ! nc -z docker 6060; do
-        sleep 1
-        WAIT=$((${WAIT} + 1))
-        if [ "${WAIT}" -gt 30 ]; then
-          echo "Error > Timeout waiting for Clair to start"
-          exit 1
-        fi
-      done
-    - docker pull "registry.gitlab.com/${CI_PROJECT_PATH}/${ADDON_ARCH}:${CI_COMMIT_SHA}"
-  script:
-    - |
-      clair-scanner \
-        -c http://docker:6060 \
-        --ip $(hostname -i) \
-        -w clair-whitelist.yml \
-        "registry.gitlab.com/${CI_PROJECT_PATH}/${ADDON_ARCH}:${CI_COMMIT_SHA}"
-  tags:
-    - scan
 
 # Generic deploy template
 .deploy: &deploy
@@ -220,7 +178,7 @@ stages:
 # Preflight jobs
 hadolint:
   <<: *preflight
-  image: hadolint/hadolint:v1.6.6
+  image: hadolint/hadolint:latest-debian
   before_script:
     - hadolint --version
   script:
@@ -291,7 +249,7 @@ build:armhf:
   <<: *build
   variables:
     ADDON_ARCH: armhf
-    FROM: hassioaddons/base-armhf:1.4.2
+    FROM: hassioaddons/ubuntu-base-armhf:2.2.0
   tags:
     - build
     - armhf
@@ -300,7 +258,7 @@ build:aarch64:
   <<: *build
   variables:
     ADDON_ARCH: aarch64
-    FROM: hassioaddons/base-aarch64:1.4.2
+    FROM: hassioaddons/ubuntu-base-aarch64:2.2.0
   tags:
     - build
     - aarch64
@@ -309,7 +267,7 @@ build:i386:
   <<: *build
   variables:
     ADDON_ARCH: i386
-    FROM: hassioaddons/base-i386:1.4.2
+    FROM: hassioaddons/ubuntu-base-i386:2.2.0
   tags:
     - build
     - i386
@@ -318,31 +276,10 @@ build:amd64:
   <<: *build
   variables:
     ADDON_ARCH: amd64
-    FROM: hassioaddons/base-amd64:1.4.2
+    FROM: hassioaddons/ubuntu-base-amd64:2.2.0
   tags:
     - build
     - amd64
-
-# Scan jobs
-clair:armhf:
-  <<: *scan
-  variables:
-    ADDON_ARCH: armhf
-
-clair:aarch64:
-  <<: *scan
-  variables:
-    ADDON_ARCH: aarch64
-
-clair:i386:
-  <<: *scan
-  variables:
-    ADDON_ARCH: i386
-
-clair:amd64:
-  <<: *scan
-  variables:
-    ADDON_ARCH: amd64
 
 # Deploy jobs
 deploy:armhf:

@@ -10,9 +10,6 @@ if ! hass.directory_exists '/config/notebooks'; then
     mkdir -p /config/notebooks \
         || hass.die 'Failed creating notebooks directory'
 
-    apk add --no-cache git \
-        || hass.die 'Failed installing git'
-
     git clone -b master --single-branch \
         https://github.com/home-assistant/home-assistant-notebooks.git \
         /config/notebooks/home-assistant \
