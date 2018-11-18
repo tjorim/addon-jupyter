@@ -21,13 +21,17 @@ RUN \
         git=1:2.17.1-1ubuntu0.3 \
         gpg-agent=2.2.4-1ubuntu1.1 \
         gpg=2.2.4-1ubuntu1.1 \
+        libfreetype6-dev=2.8.1-2ubuntu2 \
+        libfreetype6=2.8.1-2ubuntu2 \
+        libpng-dev=1.6.34-1ubuntu0.18.04.1 \
+        libpng16-16=1.6.34-1ubuntu0.18.04.1 \
+        libunwind-dev=1.2.1-8 \
+        libunwind8=1.2.1-8 \
+        libzmq3-dev=4.2.5-1 \
+        libzmq5=4.2.5-1 \
+        pkg-config=0.29.1-0ubuntu2 \
         python3-dev=3.6.5-3ubuntu1 \
         python3=3.6.5-3ubuntu1 \
-        libfreetype6=2.8.1-2ubuntu2 \
-        libfreetype6-dev=2.8.1-2ubuntu2 \
-        pkg-config=0.29.1-0ubuntu2 \
-        libpng16-16=1.6.34-1ubuntu0.18.04.1 \
-        libpng-dev=1.6.34-1ubuntu0.18.04.1 \
     \
     && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
     \
@@ -53,10 +57,12 @@ RUN \
         dirmngr \
         gpg \
         gpg-agent \
-        python3-dev \
         libfreetype6-dev \
-        pkg-config \
         libpng-dev \
+        libunwind-dev \
+        libzmq3-dev \
+        pkg-config \
+        python3-dev \
     \
     && find /usr/lib/python3.6/ -type d -name tests -depth -exec rm -rf {} \; \
     && find /usr/lib/python3.6/ -type d -name test -depth -exec rm -rf {} \; \
