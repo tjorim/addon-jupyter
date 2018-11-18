@@ -12,7 +12,8 @@ COPY requirements.txt /opt/
 # hadolint ignore=DL3018
 ARG BUILD_ARCH
 RUN \
-    export MAKEFLAGS="-j$(nproc)" \
+    MAKEFLAGS="-j$(nproc)" \
+    && export MAKEFLAGS \
     \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
