@@ -11,9 +11,10 @@ COPY requirements.txt /opt/
 # Setup base
 # hadolint ignore=DL3018
 ARG BUILD_ARCH
-ARG MAKEFLAGS="-j2"
 RUN \
-    apt-get update \
+    export MAKEFLAGS="-j$(nproc)" \
+    \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
         build-essential=12.4ubuntu1 \
         dirmngr=2.2.4-1ubuntu1.1 \
