@@ -31,6 +31,7 @@ RUN \
         libzmq3-dev=4.2.5-1 \
         libzmq5=4.2.5-1 \
         pkg-config=0.29.1-0ubuntu2 \
+        python-dev=2.7.15~rc1-1 \
         python3-dev=3.6.5-3ubuntu1 \
         python3=3.6.5-3ubuntu1 \
     \
@@ -63,6 +64,7 @@ RUN \
         libunwind-dev \
         libzmq3-dev \
         pkg-config \
+        python-dev \
         python3-dev \
     \
     && find /usr/lib/python3.6/ -type d -name tests -depth -exec rm -rf {} \; \
