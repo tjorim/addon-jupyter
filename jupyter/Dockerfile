@@ -39,7 +39,7 @@ RUN \
     \
     && npm config set user 0 \
     && npm config set unsafe-perm true \
-    && npm install ijavascript -g \
+    && npm install ijavascript@5.0.20 -g \
     && ijsinstall --hide-undefined --install=global \
     \
     && python3 -m bash_kernel.install \
