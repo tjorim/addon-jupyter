@@ -35,8 +35,8 @@ RUN \
         libzmq5=4.2.5-1 \
         pkg-config=0.29.1-0ubuntu2 \
         python-dev=2.7.15~rc1-1 \
-        python3-dev=3.6.5-3ubuntu1 \
-        python3=3.6.5-3ubuntu1 \
+        python3-dev=3.6.7-1~18.04 \
+        python3=3.6.7-1~18.04 \
         zlib1g-dev=1:1.2.11.dfsg-0ubuntu2 \
     \
     && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
