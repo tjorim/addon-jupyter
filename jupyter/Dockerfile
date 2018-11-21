@@ -22,6 +22,7 @@ RUN \
         git=1:2.17.1-1ubuntu0.3 \
         gpg-agent=2.2.4-1ubuntu1.1 \
         gpg=2.2.4-1ubuntu1.1 \
+        libffi6-dev=3.2.1-8 \
         libffi6=3.2.1-8 \
         libfreetype6-dev=2.8.1-2ubuntu2 \
         libfreetype6=2.8.1-2ubuntu2 \
