@@ -29,6 +29,7 @@ RUN \
         libjpeg-turbo8-dev=1.5.2-0ubuntu5.18.04.1 \
         libpng-dev=1.6.34-1ubuntu0.18.04.1 \
         libpng16-16=1.6.34-1ubuntu0.18.04.1 \
+        libssl-dev=1.1.0g-2ubuntu4.1 \
         libtiff5-dev=4.0.9-5 \
         libunwind-dev=1.2.1-8 \
         libunwind8=1.2.1-8 \
@@ -68,6 +69,7 @@ RUN \
         libfreetype6-dev \
         libjpeg-turbo8-dev \
         libpng-dev \
+        libssl-dev \
         libtiff5-dev \
         libunwind-dev \
         libzmq3-dev \
