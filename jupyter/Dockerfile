@@ -19,7 +19,7 @@ RUN \
     && apt-get install -y --no-install-recommends \
         build-essential=12.4ubuntu1 \
         dirmngr=2.2.4-1ubuntu1.1 \
-        git=1:2.17.1-1ubuntu0.3 \
+        git=1:2.17.1-1ubuntu0.4 \
         gpg-agent=2.2.4-1ubuntu1.1 \
         gpg=2.2.4-1ubuntu1.1 \
         libffi-dev=3.2.1-8 \
