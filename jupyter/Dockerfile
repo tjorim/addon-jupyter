@@ -35,6 +35,8 @@ RUN \
         libunwind8=1.2.1-8 \
         libxml2-dev=2.9.4+dfsg1-6.1ubuntu1.2 \
         libxml2=2.9.4+dfsg1-6.1ubuntu1.2 \
+        libxslt1-dev=1.1.29-5 \
+        libxslt1.1=1.1.29-5 \
         libzmq3-dev=4.2.5-1 \
         libzmq5=4.2.5-1 \
         pkg-config=0.29.1-0ubuntu2 \
@@ -75,6 +77,7 @@ RUN \
         libtiff5-dev \
         libunwind-dev \
         libxml2-dev \
+        libxslt1-dev \
         libzmq3-dev \
         pkg-config \
         python-dev \
