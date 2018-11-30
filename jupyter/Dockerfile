@@ -29,6 +29,8 @@ RUN \
         libfreetype6-dev=2.8.1-2ubuntu2 \
         libfreetype6=2.8.1-2ubuntu2 \
         libjpeg-turbo8-dev=1.5.2-0ubuntu5.18.04.1 \
+        liblapack-dev=3.7.1-4ubuntu1 \
+        liblapack3=3.7.1-4ubuntu1 \
         libpng-dev=1.6.34-1ubuntu0.18.04.1 \
         libpng16-16=1.6.34-1ubuntu0.18.04.1 \
         libssl-dev=1.1.0g-2ubuntu4.1 \
@@ -75,6 +77,7 @@ RUN \
         libffi-dev \
         libfreetype6-dev \
         libjpeg-turbo8-dev \
+        liblapack-dev \
         libpng-dev \
         libssl-dev \
         libtiff5-dev \
