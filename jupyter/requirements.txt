@@ -7,6 +7,7 @@ HASS-data-detective==0.41
 homeassistant==0.83.1
 influxdb==5.2.0
 ipywidgets==7.4.2
+jupyterlab_github==0.7.0
 jupyterlab==0.35.4
 matplotlib==3.0.2
 nbconvert==5.4.0
