@@ -65,6 +65,7 @@ RUN \
     \
     && jupyter labextension install jupyterlab_bokeh --no-build \
     && jupyter labextension install @jupyterlab/github --no-build \
+    && jupyter labextension install @jupyterlab/git --no-build \
     && jupyter lab build \
     \
     && apt-get purge -y --auto-remove \
