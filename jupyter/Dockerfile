@@ -39,6 +39,7 @@ RUN \
         libxslt1.1=1.1.29-5 \
         libzmq3-dev=4.2.5-1 \
         libzmq5=4.2.5-1 \
+        pandoc=1.19.2.4~dfsg-1build4 \
         pkg-config=0.29.1-0ubuntu2 \
         python-dev=2.7.15~rc1-1 \
         python3-dev=3.6.7-1~18.04 \
