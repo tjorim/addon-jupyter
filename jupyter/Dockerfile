@@ -22,6 +22,8 @@ RUN \
         git=1:2.17.1-1ubuntu0.4 \
         gpg-agent=2.2.4-1ubuntu1.1 \
         gpg=2.2.4-1ubuntu1.1 \
+        libblas-dev=3.7.1-4ubuntu1 \
+        libblas3=3.7.1-4ubuntu1 \
         libffi-dev=3.2.1-8 \
         libffi6=3.2.1-8 \
         libfreetype6-dev=2.8.1-2ubuntu2 \
@@ -69,6 +71,7 @@ RUN \
         dirmngr \
         gpg \
         gpg-agent \
+        libblas-dev \
         libffi-dev \
         libfreetype6-dev \
         libjpeg-turbo8-dev \
