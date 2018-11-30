@@ -4,7 +4,7 @@ beautifulsoup4==4.6.3
 bokeh==1.0.2
 geopy==1.17.0
 HASS-data-detective==0.41
-homeassistant==0.82.1
+homeassistant==0.83.1
 influxdb==5.2.0
 ipywidgets==7.4.2
 jupyterlab==0.35.4
