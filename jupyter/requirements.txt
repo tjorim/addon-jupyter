@@ -1,7 +1,7 @@
 altair==2.2.2
 bash_kernel==0.7.1
 beautifulsoup4==4.6.3
-bokeh==1.0.1
+bokeh==1.0.2
 geopy==1.17.0
 HASS-data-detective==0.41
 homeassistant==0.82.1
